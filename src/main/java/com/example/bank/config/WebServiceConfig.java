@@ -15,28 +15,26 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfig {
 
-  @Bean
-  public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(
-      ApplicationContext applicationContext) {
-    MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-    servlet.setApplicationContext(applicationContext);
-    servlet.setTransformWsdlLocations(true);
-    return new ServletRegistrationBean<>(servlet, "/ws/*");
-  }
+    @Bean
+    public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext context) {
+        MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+        servlet.setApplicationContext(context);
+        servlet.setTransformWsdlLocations(true);
+        return new ServletRegistrationBean<>(servlet, "/ws/*");
+    }
 
-  // WSDL accessible via: http://localhost:8080/ws/bank.wsdl
-  @Bean(name = "bank")
-  public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema bankSchema) {
-    DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
-    wsdl.setPortTypeName("BankPort");
-    wsdl.setLocationUri("/ws");
-    wsdl.setTargetNamespace("http://example.com/bank");
-    wsdl.setSchema(bankSchema);
-    return wsdl;
-  }
+    @Bean(name = "bank")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema bankSchema) {
+        DefaultWsdl11Definition wsdl = new DefaultWsdl11Definition();
+        wsdl.setPortTypeName("BankPort");
+        wsdl.setLocationUri("/ws");
+        wsdl.setTargetNamespace("http://example.com/bank");
+        wsdl.setSchema(bankSchema);
+        return wsdl;
+    }
 
-  @Bean
-  public XsdSchema bankSchema() {
-    return new SimpleXsdSchema(new ClassPathResource("bank.xsd"));
-  }
+    @Bean
+    public XsdSchema bankSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("bank.xsd"));
+    }
 }

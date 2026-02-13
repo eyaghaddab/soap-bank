@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "39e9d604-a8a6-4c65-90a1-eed9fff32773",
+		"name": "tp SOA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33949315"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:ban=\"http://example.com/bank\">\r\n\r\n   <soapenv:Header/>\r\n\r\n   <soapenv:Body>\r\n      <ban:GetAccountRequest>\r\n         <ban:accountId>A001</ban:accountId>\r\n      </ban:GetAccountRequest>\r\n   </soapenv:Body>\r\n\r\n</soapenv:Envelope>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ws",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deposit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\nxmlns:ban=\"http://example.com/bank\">\r\n\r\n<soapenv:Header/>\r\n\r\n<soapenv:Body>\r\n   <ban:DepositRequest>\r\n      <ban:accountId>A001</ban:accountId>\r\n      <ban:amount>200</ban:amount>\r\n   </ban:DepositRequest>\r\n</soapenv:Body>\r\n\r\n</soapenv:Envelope>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ws",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\nxmlns:ban=\"http://example.com/bank\">\r\n\r\n<soapenv:Header/>\r\n\r\n<soapenv:Body>\r\n   <ban:TransferRequest>\r\n      <ban:fromAccountId>A001</ban:fromAccountId>\r\n      <ban:toAccountId>A002</ban:toAccountId>\r\n      <ban:amount>50</ban:amount>\r\n   </ban:TransferRequest>\r\n</soapenv:Body>\r\n\r\n</soapenv:Envelope>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ws?Content-Type=text/xml",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Withdraw",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\nxmlns:ban=\"http://example.com/bank\">\r\n\r\n<soapenv:Header/>\r\n\r\n<soapenv:Body>\r\n   <ban:WithdrawRequest>\r\n      <ban:accountId>A001</ban:accountId>\r\n      <ban:amount>100</ban:amount>\r\n   </ban:WithdrawRequest>\r\n</soapenv:Body>\r\n\r\n</soapenv:Envelope>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ws",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
